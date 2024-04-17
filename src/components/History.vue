@@ -57,31 +57,33 @@ font-size: 1.2rem;
 /* Tablet */
 @media (max-width: 768px) {
   .container {
-    margin-top: 15%;
+    margin-top: 2%;
   }
 
   h2 {
     font-size: 1rem;
+    margin-left: 15px;
   }
 
   .history {
-    padding: 8px;
+    padding: 15px;
     margin-bottom: 8px;
+    font-size: 15px;
   }
 }
 
 /* Mobile */
 @media (max-width: 480px) {
   .container {
-    margin-top: 10%;
+    margin-top: 2%;
   }
 
   h2 {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 
   .history {
-    padding: 5px;
+    padding: 15px;
     margin-bottom: 5px;
   }
 }

@@ -30,15 +30,15 @@ export default {
 /* Tablet */
 @media (max-width: 768px) {
   .custom-button {
-    font-size: 1.2rem;
-    padding: 15px 30px;
+    font-size: 15px;
+    padding: 10px 20px;
   }
 }
 
 /* Mobile */
 @media (max-width: 480px) {
   .custom-button {
-    font-size: 1rem;
+    font-size: 15px;
     padding: 10px 20px;
   }
 }

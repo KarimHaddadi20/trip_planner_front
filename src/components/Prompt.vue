@@ -55,12 +55,13 @@ const submitForm = async () => {
 /* Tablet */
 @media (max-width: 768px) {
   .container {
-    padding: 20px;
+    padding: 15px;
   }
 
   .input-field {
-    font-size: 1.2rem;
-    margin: 15px;
+    font-size: 13px;
+    margin: 1px;
+
   }
 
   .prompt {
@@ -75,8 +76,8 @@ const submitForm = async () => {
   }
 
   .input-field {
-    font-size: 1rem;
-    margin: 10px;
+    font-size: 14px;
+    margin: 1px;
   }
 
   .prompt {
