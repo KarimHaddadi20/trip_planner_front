@@ -1,12 +1,13 @@
 <!-- History -->
 
 <template>
-  
   <div class="container">
-  <h2>Derniers itinéraires</h2>
+    <h2>Derniers itinéraires</h2>
 
     <div class="history" v-for="(item, i) in prompts" :key="i">
-      {{ item.prompt }}
+      <router-link class="history2" :to="{ name: 'trips', params: { id: item.id } }">
+        {{ item.prompt }}
+      </router-link>
     </div>
   </div>
 </template>
@@ -45,6 +46,12 @@ font-size: 1.2rem;
   margin-bottom: 10px; /* Add some margin to separate the prompts */
   color: white; /* Change this to your preferred text color */
 }
+
+.history2 {
+  text-decoration: none; /* Remove the underline from the link */
+  color: white; /* Change this to your preferred text color */
+}
+
 
 
 /* Tablet */
