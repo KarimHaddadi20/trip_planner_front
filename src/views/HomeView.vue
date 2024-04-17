@@ -1,7 +1,6 @@
 <script setup>
 import Header from '@/components/Header.vue'
 import Prompt from '@/components/Prompt.vue'
-import Button from '@/components/Button.vue'
 import History from '@/components/History.vue'
 </script>
 
@@ -9,7 +8,6 @@ import History from '@/components/History.vue'
   <div class="home">
     <Header />
     <Prompt />
-    <Button />
     <History />
   </div>
 </template>

@@ -1,11 +1,36 @@
 <template>
-    <div class="container">
-      <input class="input-field" type="text" placeholder="Entrez du texte ici..." />
-    </div>
-  </template>
-  
-  <script setup>
-  </script>
+  <div class="container">
+    <input v-model="prompt" class="input-field" type="text" placeholder="Entrez du texte ici..." />
+      <Button @click="submitForm" />
+      <div class="group" v-for="(item, i) in prompts.slice().reverse()" :key="i">
+        {{ item.prompt }}
+      </div>
+  </div>
+</template>
+
+
+<script setup>
+import { ref } from 'vue';
+import axios from 'axios';
+import Button from './Button.vue';
+
+const prompt = ref('');
+const prompts = ref([]);
+
+const submitForm = async () => {
+  console.log('submitForm called');
+
+  try {
+    const response = await axios.post('http://localhost:3000/trips', { prompt: prompt.value });
+    console.log(response.data);
+    prompts.value.push(response.data); // Ajoute le prompt reçu à la liste des prompts
+
+  } catch (error) {
+    console.error(error);
+  }
+};
+</script>
+
   
   <style scoped>
   .container {

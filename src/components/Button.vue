@@ -1,12 +1,12 @@
 <template>
-    <button class="custom-button">Cliquez ici</button>
-  </template>
-  
-  <script>
-  export default {
-    name: 'Button'
-  }
-  </script>
+  <button class="custom-button" @click="$emit('click')">Cliquez ici</button>
+</template>
+
+<script>
+export default {
+  name: 'Button',
+};
+</script>
   
   <style scoped>
   .custom-button {
@@ -14,7 +14,7 @@
     width: 30%;
     height: 35px;
     left: 35%;
-    top: 438px;
+    top: 180px;
     background-color: #6D695E;
     color: white;
     border: none;
