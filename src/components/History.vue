@@ -1,91 +1,83 @@
+<!-- History -->
+
 <template>
+  
   <div class="container">
-    <h2 class="title">Derniers itinéraires</h2>
-    <div class="group" v-for="(prompt, i) in prompts" :key="i">
-      {{ prompt.prompt }}
+  <h2>Derniers itinéraires</h2>
+
+    <div class="history" v-for="(item, i) in prompts" :key="i">
+      {{ item.prompt }}
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import { onMounted } from 'vue';
+import usePrompts from '../utils/usePrompts.js';
 
-const prompts = ref([]);
+const { prompts, fetchPrompts } = usePrompts();
 
-onMounted(async () => {
-  try {
-    const response = await axios.get('http://localhost:3000/trips');
-    prompts.value = response.data;
-  } catch (error) {
-    console.error(error);
-  }
-});
+onMounted(fetchPrompts);
 </script>
 
 <style scoped>
+
+
 .container {
-  position: absolute;
-  width: 90%;
-  left: 5%;
-  top: 1px;
-  
+
+margin-top: 2%;
+
 }
 
-.title {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 17px;
-  display: flex;
-  align-items: center;
-  color: #968F7C;
+
+h2 {
+
+font-family: 'Inter';
+color : #958F7E;
+font-size: 1.2rem;
 }
 
-.group {
-  position: absolute;
-  width: 680px;
-  height: 46px;
-  left: 12px;
-  background-color: #262522; /* Changer en fonction de la couleur d'arrière-plan souhaitée */
-  border-radius: 10px; /* Changer en fonction du rayon de bordure souhaité */
-  color: #FFFFFF;
-  font-size: 16px;
-  font-family: 'Inter'
+
+.history {
+  background: #262522; /* Change this to your preferred background color */
+  border-radius: 10px; /* Change this to your preferred border radius */
+  padding: 10px; /* Add padding to make the text not stick to the border */
+  margin-bottom: 10px; /* Add some margin to separate the prompts */
+  color: white; /* Change this to your preferred text color */
 }
 
-.group:nth-child(1) {
-  top: 559px;
-}
 
-.group:nth-child(2) {
-  top: 618px;
-}
+/* Tablet */
+@media (max-width: 768px) {
+  .container {
+    margin-top: 15%;
+  }
 
-.group:nth-child(3) {
-  top: 677px;
-}
+  h2 {
+    font-size: 1rem;
+  }
 
-.group:nth-child(4) {
-  top: 736px;
-}
-
-/* Styles pour les tablettes */
-@media (max-width: 200px) {
-  .group {
-    width: 80%; /* Réduire la largeur pour les tablettes */
-    height: 40px; /* Réduire la hauteur pour les tablettes */
-    left: 5%; /* Centrer le groupe sur la page */
+  .history {
+    padding: 8px;
+    margin-bottom: 8px;
   }
 }
 
-/* Styles pour les mobiles */
+/* Mobile */
 @media (max-width: 480px) {
-  .group {
-    width: 95%; /* Réduire encore plus la largeur pour les mobiles */
-    height: 35px; /* Réduire encore plus la hauteur pour les mobiles */
-    left: 2.5%; /* Centrer encore plus le groupe sur la page */
+  .container {
+    margin-top: 10%;
+  }
+
+  h2 {
+    font-size: 0.8rem;
+  }
+
+  .history {
+    padding: 5px;
+    margin-bottom: 5px;
   }
 }
+
+
 </style>

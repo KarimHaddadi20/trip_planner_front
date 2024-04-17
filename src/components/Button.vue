@@ -1,5 +1,7 @@
 <template>
-  <button class="custom-button" @click="$emit('click')">Cliquez ici</button>
+  <div class="button-container">
+    <button class="custom-button">Cliquez ici</button>
+  </div>
 </template>
 
 <script>
@@ -8,30 +10,36 @@ export default {
 };
 </script>
   
-  <style scoped>
+<style scoped>
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.custom-button {
+  background-color: #6D695E;
+  margin-top: auto; /* This pushes the button to the bottom */
+  padding: 10px 20px;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px; /* This adds a 10px border radius */
+  margin-top: 30px;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
   .custom-button {
-    position: absolute;
-    width: 30%;
-    height: 35px;
-    left: 35%;
-    top: 180px;
-    background-color: #6D695E;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    font-size: 1.2rem;
+    padding: 15px 30px;
   }
-  
-  @media (max-width: 768px) {
-    .custom-button {
-      width: 50%;
-      left: 25%;
-    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .custom-button {
+    font-size: 1rem;
+    padding: 10px 20px;
   }
-  
-  @media (max-width: 320px) {
-    .custom-button {
-      width: 70%;
-      left: 15%;
-    }
-  }
-  </style>
+}
+</style>
