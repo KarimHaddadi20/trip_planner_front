@@ -1,112 +1,16 @@
+<script setup>
+import Card from "@/components/Card.vue";
+</script>
 <template>
-    <div>
-        <!-- Div pour la carte Leaflet -->
-        <div id="map" style="height: 400px;"></div>
-        <!-- Affiche les détails du voyage si la donnée "trip" existe -->
-        <div v-if="trip">
-            <!-- Affiche le contenu du voyage -->
-            <p>{{ trip.output }}</p>
-        </div>
-
-        <!-- Affiche un message "Loading..." si la donnée "trip" n'existe pas encore -->
-        <div v-else>Loading...</div>
-    </div>
+  <div class="home">
+    <Card />
+  </div>
 </template>
 
-<script>
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-
-export default {
-    // Données du composant
-    data() {
-        return {
-            // Donnée pour stocker le voyage
-            trip: null,
-
-            // Donnée pour stocker le nouveau "prompt" du voyage
-            newPrompt: "",
-
-            // Référence à la carte Leaflet
-            map: null
-        };
-    },
-
-    // Méthode appelée lorsque le composant est créé
-    async created() {
-        try {
-            // Récupère le voyage depuis l'API en utilisant l'ID du voyage dans l'URL
-            const response = await fetch(
-                `http://localhost:3000/trips/${this.$route.params.id}`
-            );
-
-            // Vérifie si la réponse est OK, sinon lève une erreur
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            // Convertit la réponse en JSON et stocke les données dans la donnée "trip"
-            const data = await response.json();
-            this.trip = data;
-
-            // Initialise la carte Leaflet
-            this.$nextTick(this.initMap); // Utilisation de $nextTick pour s'assurer que l'élément DOM est rendu
-        } catch (error) {
-            // Affiche l'erreur dans la console
-            console.error("Fetch error:", error);
-        }
-    },
-
-    // Méthodes du composant
-    methods: {
-        // Méthode pour mettre à jour le "prompt" du voyage
-        async updateTrip() {
-            try {
-                // Envoie une requête PATCH à l'API pour mettre à jour le "prompt" du voyage avec le nouveau "prompt" saisi dans le formulaire
-                const response = await fetch(`http://localhost:3000/trips/${this.$route.params.id}`, {
-                    method: "PATCH",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ prompt: this.newPrompt })
-                });
-
-                // Vérifie si la réponse est OK, sinon lève une erreur
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                // Met à jour le "prompt" du voyage dans la donnée "trip"
-                this.trip.prompt = this.newPrompt;
-
-                // Réinitialise le champ de saisie du nouveau "prompt"
-                this.newPrompt = "";
-            } catch (error) {
-                // Affiche l'erreur dans la console
-                console.error("Fetch error:", error);
-            }
-        },
-
-        // Méthode pour initialiser la carte Leaflet
-        initMap() {
-            // Crée une instance de carte Leaflet dans un élément avec l'ID 'map'
-            this.map = L.map('map').setView([51.505, -0.09], 13);
-
-            // Ajoute une couche de tuiles OpenStreetMap à la carte
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(this.map);
-
-            // Ajoute un marqueur à une position spécifique sur la carte
-            L.marker([51.5, -0.09]).addTo(this.map)
-                .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-                .openPopup();
-        }
-    }
-};
-</script>
-
-<style>
-/* Styles spécifiques à la carte peuvent être ajoutés ici */
-#map {
-    width: 100%;
+<style scoped>
+.home {
+  background-color: #2f2e2b;
+  height: 150vh;
+  width: 100%;
 }
 </style>
