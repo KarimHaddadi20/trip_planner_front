@@ -1,6 +1,6 @@
 <template>
   <div class="button-container">
-    <button class="custom-button">C’est parti</button>
+    <button class="custom-button">C'est parti</button>
   </div>
 </template>
 

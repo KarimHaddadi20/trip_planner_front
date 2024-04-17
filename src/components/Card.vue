@@ -77,6 +77,9 @@ export default {
         `http://localhost:3000/trips/${this.$route.params.id}`
       );
 
+
+
+
       // Vérifie si la réponse est OK, sinon lève une erreur
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -190,7 +193,7 @@ svg {
     }
   
     p {
-      font-size: 0.8rem;
+      font-size: 1rem;
       margin: 10px;
 
     }
@@ -222,7 +225,7 @@ svg {
     }
   
     p {
-      font-size: 0.7rem;
+      font-size: 0.9rem;
       margin: 10px;
 
     }

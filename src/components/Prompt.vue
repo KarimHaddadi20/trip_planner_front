@@ -19,13 +19,18 @@
 import { ref } from "vue";
 import Button from "./Button.vue";
 import usePrompts from "../utils/usePrompts.js";
+import { useRouter } from 'vue-router';
+
 
 const { addPrompt } = usePrompts();
 const prompt = ref("");
+const router = useRouter();
+
 
 const submitForm = async () => {
   console.log("submitForm called");
   await addPrompt(prompt.value);
+  router.push({ name: 'trips', params: { id: 'trip.id', search: prompt.value } });
 };
 </script>
 
