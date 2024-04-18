@@ -1,8 +1,6 @@
 <template>
   <div>
-    <!-- Div pour la carte Leaflet -->
     <div id="map" style="height: 400px"></div>
-    <!-- Affiche les détails du voyage si la donnée "trip" existe -->
     <div v-if="trip">
       <h2>
         {{ trip.prompt }}
@@ -13,6 +11,7 @@
           viewBox="0 0 35 35"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          @click="goToHomePage"
         >
           <rect
             width="35"
@@ -131,6 +130,11 @@ export default {
         // Affiche l'erreur dans la console
         console.error("Fetch error:", error);
       }
+    },
+
+    // Ajoutez la méthode ici
+    goToHomePage() {
+      this.$router.push({ name: "home", query: { search: this.trip.prompt } });
     },
 
     // Méthode pour initialiser la carte Leaflet
