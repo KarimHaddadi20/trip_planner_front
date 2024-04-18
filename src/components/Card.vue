@@ -1,9 +1,12 @@
 <template>
   <div>
+
+
     <div id="map" style="height: 400px"></div>
     <div v-if="trip">
       <h2>
         {{ trip.prompt }}
+
         <svg
           width="35"
           height="35"
@@ -56,6 +59,8 @@
 <script>
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { ref } from "vue";
+
 
 export default {
   // Données du composant
@@ -69,6 +74,7 @@ export default {
 
       // Référence à la carte Leaflet
       map: null,
+      
     };
   },
 
