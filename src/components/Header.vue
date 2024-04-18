@@ -1,5 +1,6 @@
 <template>
   <div class="header">
+    <div>
     <svg
       width="54"
       height="54"
@@ -8,7 +9,7 @@
       xmlns="http://www.w3.org/2000/svg"
     >
       <g clip-path="url(#clip0_12_6)">
-        <path
+        <path class="rotate"
           d="M31.23 22.965L15.69 13.5C15 13.11 14.025 14.055 14.4 14.76L23.625 30.6L39.465 39.825C39.6438 39.8899 39.8376 39.9018 40.023 39.8594C40.2085 39.8171 40.3778 39.7222 40.5107 39.5861C40.6437 39.45 40.7346 39.2785 40.7726 39.0921C40.8106 38.9057 40.794 38.7123 40.725 38.535L31.23 22.965ZM25.23 28.965L29.73 24.465L36.555 35.625L25.23 28.965Z"
           fill="white"
           style="fill: white; fill-opacity: 1"
@@ -30,6 +31,7 @@
         </clipPath>
       </defs>
     </svg>
+    </div>
 
     <h1 class="header-title">Planificateur de voyage</h1>
     <p>générer par l'IA</p>
@@ -39,6 +41,21 @@
 <script setup></script>
 
 <style scoped>
+.rotate {
+  animation: rotation 2s infinite linear;
+  transform-origin: 50% 50%;
+
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .header {
   display: flex;
   align-items: center;
