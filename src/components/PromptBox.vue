@@ -12,12 +12,12 @@
       {{ item.prompt }}
     </div>
   </div>
-  <Button @click="submitForm" />
+  <ButtonPrimary @click="submitForm" />
 </template>
 
 <script setup>
 import { ref } from "vue";
-import Button from "./Button.vue";
+import ButtonPrimary from "./ButtonPrimary.vue";
 import usePrompts from "../utils/usePrompts.js";
 import { useRouter } from 'vue-router';
 
