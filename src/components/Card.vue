@@ -143,6 +143,11 @@ export default {
 
     // Méthode pour initialiser la carte Leaflet
     initMap() {
+
+
+
+
+
       // Crée une instance de carte Leaflet dans un élément avec l'ID 'map'
       this.map = L.map("map").setView([51.505, -0.09], 13);
 
@@ -157,7 +162,25 @@ export default {
         .addTo(this.map)
         .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
         .openPopup();
-    },
+   
+
+        const markers = [];
+
+            // Parcourt chaque étape du voyage et ajoute un marqueur à la carte
+            for (const step of this.trip.output) {
+                const marker = L.marker([step.location.latitude, step.location.longitude]).addTo(this.map);
+                marker.bindPopup(`<strong>${step.name}</strong><br>${step.description}`);
+                markers.push(marker);
+            }
+
+            // Ajuste la vue de la carte pour afficher tous les marqueurs
+            const bounds = L.latLngBounds(markers.map(marker => marker.getLatLng()));
+            this.map.fitBounds(bounds);
+   
+   
+      },
+
+
   },
 };
 
