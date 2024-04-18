@@ -6,10 +6,10 @@
 
 <script>
 export default {
-  name: 'Button',
+  name: "Button",
 };
 </script>
-  
+
 <style scoped>
 .button-container {
   display: flex;
@@ -17,7 +17,7 @@ export default {
 }
 
 .custom-button {
-  background-color: #6D695E;
+  background-color: #6d695e;
   margin-top: auto; /* This pushes the button to the bottom */
   padding: 10px 20px;
   color: white;

@@ -1,7 +1,7 @@
 <script setup>
-import Header from '@/components/Header.vue'
-import PromptBox from '@/components/PromptBox.vue'
-import HistoryList from '@/components/HistoryList.vue'
+import Header from "@/components/Header.vue";
+import PromptBox from "@/components/PromptBox.vue";
+import HistoryList from "@/components/HistoryList.vue";
 </script>
 
 <template>
@@ -14,7 +14,7 @@ import HistoryList from '@/components/HistoryList.vue'
 
 <style scoped>
 .home {
-  background-color: #2F2E2B;
+  background-color: #2f2e2b;
   height: 150vh;
   width: 100%;
 }

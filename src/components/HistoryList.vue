@@ -5,7 +5,10 @@
     <h2>Derniers itinéraires</h2>
 
     <div class="history" v-for="(item, i) in prompts" :key="i">
-      <router-link class="history2" :to="{ name: 'trips', params: { id: item.id } }">
+      <router-link
+        class="history2"
+        :to="{ name: 'trips', params: { id: item.id } }"
+      >
         {{ item.prompt }}
       </router-link>
     </div>
@@ -13,8 +16,8 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
-import usePrompts from '../utils/usePrompts.js';
+import { onMounted } from "vue";
+import usePrompts from "../utils/usePrompts.js";
 
 const { prompts, fetchPrompts } = usePrompts();
 
@@ -22,22 +25,15 @@ onMounted(fetchPrompts);
 </script>
 
 <style scoped>
-
-
 .container {
-
-margin-top: 2%;
-
+  margin-top: 2%;
 }
-
 
 h2 {
-
-font-family: 'Inter';
-color : #958F7E;
-font-size: 1.2rem;
+  font-family: "Inter";
+  color: #958f7e;
+  font-size: 1.2rem;
 }
-
 
 .history {
   background: #262522; /* Change this to your preferred background color */
@@ -51,8 +47,6 @@ font-size: 1.2rem;
   text-decoration: none; /* Remove the underline from the link */
   color: white; /* Change this to your preferred text color */
 }
-
-
 
 /* Tablet */
 @media (max-width: 768px) {
@@ -87,6 +81,4 @@ font-size: 1.2rem;
     margin-bottom: 5px;
   }
 }
-
-
 </style>
