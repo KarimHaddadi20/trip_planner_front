@@ -4,7 +4,7 @@
     <div v-if="trip">
       <h2>
         {{ trip.prompt }}
-
+        
         <svg
           width="35"
           height="35"
@@ -165,7 +165,6 @@ export default {
         );
         markers.push(marker);
       }
-
 
       const bounds = L.latLngBounds(
         markers.map((marker) => marker.getLatLng())
