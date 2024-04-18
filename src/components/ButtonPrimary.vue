@@ -18,12 +18,12 @@ export default {
 
 .custom-button {
   background-color: #6d695e;
-  margin-top: auto; /* This pushes the button to the bottom */
+  margin-top: auto; 
   padding: 10px 20px;
   color: white;
   font-size: 1rem;
   border: none;
-  border-radius: 10px; /* This adds a 10px border radius */
+  border-radius: 10px;
   margin-top: 30px;
 }
 
