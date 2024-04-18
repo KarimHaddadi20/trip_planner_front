@@ -19,21 +19,19 @@
 import { ref } from "vue";
 import ButtonPrimary from "./ButtonPrimary.vue";
 import usePrompts from "../utils/usePrompts.js";
-import { useRouter } from "vue-router";
+import { useRouter } from 'vue-router';
+
 
 const { addPrompt } = usePrompts();
 const prompt = ref("");
 const router = useRouter();
 
+
 const submitForm = async () => {
   console.log("submitForm called");
   const newPrompt = await addPrompt(prompt.value);
-  if (newPrompt) {
-    // Vérifiez que newPrompt est défini avant d'accéder à ses propriétés
-    router.push({
-      name: "trips",
-      params: { id: newPrompt.id, search: prompt.value },
-    });
+  if (newPrompt) { // Vérifiez que newPrompt est défini avant d'accéder à ses propriétés
+    router.push({ name: 'trips', params: { id: newPrompt.id, search: prompt.value } });
   }
 };
 </script>
@@ -70,6 +68,7 @@ const submitForm = async () => {
   .input-field {
     font-size: 13px;
     margin: 1px;
+
   }
 
   .prompt {

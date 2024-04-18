@@ -4,7 +4,6 @@
     <div v-if="trip">
       <h2>
         {{ trip.prompt }}
-
         <svg
           width="35"
           height="35"
@@ -40,7 +39,6 @@
       </h2>
 
       <h3>Itinéraire</h3>
-
       <!-- Affiche le contenu du voyage -->
       <ul class="no-bullets">
         <li v-for="(step, index) in trip.output" :key="index">
@@ -132,7 +130,7 @@ export default {
       }
     },
 
-    // Ajoutez la méthode ici
+    // icon svg History router modify le prompt 
     goToHomePage() {
       this.$router.push({ name: "home", query: { search: this.trip.prompt } });
     },
