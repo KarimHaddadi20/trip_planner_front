@@ -4,13 +4,9 @@
     <div id="map" style="height: 400px"></div>
     <!-- Affiche les détails du voyage si la donnée "trip" existe -->
     <div v-if="trip">
-
-
-
-      
       <h2>
         {{ trip.prompt }}
-        
+
         <svg
           width="35"
           height="35"
@@ -49,10 +45,10 @@
       <!-- Affiche le contenu du voyage -->
       <ul class="no-bullets">
         <li v-for="(step, index) in trip.output" :key="index">
-            <h3> {{ index + 1 }}.{{ step.name }}</h3>
-            <p>{{ step.description }}</p>
+          <h3>{{ index + 1 }}.{{ step.name }}</h3>
+          <p>{{ step.description }}</p>
         </li>
-    </ul>
+      </ul>
     </div>
 
     <!-- Affiche un message "Loading..." si la donnée "trip" n'existe pas encore -->
@@ -86,10 +82,6 @@ export default {
       const response = await fetch(
         `http://localhost:3000/trips/${this.$route.params.id}`
       );
-
-      
-
-
 
       // Vérifie si la réponse est OK, sinon lève une erreur
       if (!response.ok) {
@@ -143,11 +135,6 @@ export default {
 
     // Méthode pour initialiser la carte Leaflet
     initMap() {
-
-
-
-
-
       // Crée une instance de carte Leaflet dans un élément avec l'ID 'map'
       this.map = L.map("map").setView([51.505, -0.09], 13);
 
@@ -162,32 +149,29 @@ export default {
         .addTo(this.map)
         .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
         .openPopup();
-   
 
-        const markers = [];
+      const markers = [];
 
-            // Parcourt chaque étape du voyage et ajoute un marqueur à la carte
-            for (const step of this.trip.output) {
-                const marker = L.marker([step.location.latitude, step.location.longitude]).addTo(this.map);
-                marker.bindPopup(`<strong>${step.name}</strong><br>${step.description}`);
-                markers.push(marker);
-            }
+      // Parcourt chaque étape du voyage et ajoute un marqueur à la carte
+      for (const step of this.trip.output) {
+        const marker = L.marker([
+          step.location.latitude,
+          step.location.longitude,
+        ]).addTo(this.map);
+        marker.bindPopup(
+          `<strong>${step.name}</strong><br>${step.description}`
+        );
+        markers.push(marker);
+      }
 
-            // Ajuste la vue de la carte pour afficher tous les marqueurs
-            const bounds = L.latLngBounds(markers.map(marker => marker.getLatLng()));
-            this.map.fitBounds(bounds);
-   
-   
-      },
-
-
+      // Ajuste la vue de la carte pour afficher tous les marqueurs
+      const bounds = L.latLngBounds(
+        markers.map((marker) => marker.getLatLng())
+      );
+      this.map.fitBounds(bounds);
+    },
   },
 };
-
-
-  
-
-
 </script>
 
 <style scoped>
@@ -222,82 +206,71 @@ h3 {
 }
 
 svg {
-    width: 35px;
-    height: 35px;
-  }
+  width: 35px;
+  height: 35px;
+}
 
 /* Styles pour les tablettes */
 @media (max-width: 768px) {
-    #map {
-      height: 300px;
-    }
-  
-    h2 {
-      font-size: 1.5rem;
-      margin: 10px;
-    }
-  
-    p {
-      font-size: 1rem;
-      margin: 10px;
-
-    }
-  
-    h3 {
-      font-size: 1rem;
-      margin: 10px;
-
-    }
-
-    svg {
-        width: 35px;
-        height: 35px;
-        padding-right:10px;
-      }
-
-
-
-      .no-bullets {
-        list-style: none;
-      }
-      
-
+  #map {
+    height: 300px;
   }
-  
-  /* Styles pour les mobiles */
-  @media (max-width: 480px) {
-    #map {
-      height: 200px;
-    }
-  
-    h2 {
-      font-size: 1.5rem;
-      margin: 10px;
 
-    }
-  
-    p {
-      font-size: 0.9rem;
-      margin: 10px;
+  h2 {
+    font-size: 1.5rem;
+    margin: 10px;
+  }
 
-    }
-  
-    h3 {
-      font-size: 0.9rem;
-      margin: 10px;
+  p {
+    font-size: 1rem;
+    margin: 10px;
+  }
 
-    }
-    
-    svg {
-        width: 35px;
-        height: 35px;
-        padding-right:10px;
-      }
+  h3 {
+    font-size: 1rem;
+    margin: 10px;
+  }
 
-      
-.no-bullets {
-  list-style: none;
+  svg {
+    width: 35px;
+    height: 35px;
+    padding-right: 10px;
+  }
+
+  .no-bullets {
+    list-style: none;
+  }
 }
 
+/* Styles pour les mobiles */
+@media (max-width: 480px) {
+  #map {
+    height: 200px;
   }
+
+  h2 {
+    font-size: 1.5rem;
+    margin: 10px;
+  }
+
+  p {
+    font-size: 0.9rem;
+    margin: 10px;
+  }
+
+  h3 {
+    font-size: 0.9rem;
+    margin: 10px;
+  }
+
+  svg {
+    width: 35px;
+    height: 35px;
+    padding-right: 10px;
+  }
+
+  .no-bullets {
+    list-style: none;
+  }
+}
 </style>
