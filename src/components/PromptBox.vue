@@ -89,7 +89,6 @@ const submitForm = async () => {
   isLoading.value = false;
 
   if (newPrompt) {
-    // Vérifiez que newPrompt est défini avant d'accéder à ses propriétés
     router.push({
       name: "trips",
       params: { id: newPrompt.id, search: prompt.value },
@@ -112,8 +111,8 @@ const submitForm = async () => {
 }
 
 .loader {
-  width: 100px; /* Ajustez la largeur */
-  height: 100px; /* Ajustez la hauteur */
+  width: 100px;
+  height: 100px; 
 }
 
 @keyframes spin {
