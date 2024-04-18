@@ -33,3 +33,8 @@ npm run build
 ```sh
 npm run test:unit
 ```
+
+# todo
+
+- [ ] route push dans le composants Prompt 
+- [ ] et transformer l'icon de tripview en lien routerlink 

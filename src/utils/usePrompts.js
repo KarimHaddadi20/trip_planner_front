@@ -8,6 +8,7 @@ export default function usePrompts() {
     try {
       const response = await axios.get('http://localhost:3000/trips');
       prompts.value = response.data;
+      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -17,6 +18,8 @@ export default function usePrompts() {
     try {
       const response = await axios.post('http://localhost:3000/trips', { prompt });
       prompts.value.push(response.data);
+      console.log(response.data);
+      return response.data; // Ajoutez cette ligne
     } catch (error) {
       console.error(error);
     }

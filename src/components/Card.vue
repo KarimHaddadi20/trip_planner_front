@@ -4,8 +4,13 @@
     <div id="map" style="height: 400px"></div>
     <!-- Affiche les détails du voyage si la donnée "trip" existe -->
     <div v-if="trip">
+
+
+
+      
       <h2>
         {{ trip.prompt }}
+        
         <svg
           width="35"
           height="35"
@@ -42,7 +47,12 @@
       <h3>Itinéraire</h3>
 
       <!-- Affiche le contenu du voyage -->
-      <p>{{ trip.output }}</p>
+      <ul class="no-bullets">
+        <li v-for="(step, index) in trip.output" :key="index">
+            <h3> {{ index + 1 }}.{{ step.name }}</h3>
+            <p>{{ step.description }}</p>
+        </li>
+    </ul>
     </div>
 
     <!-- Affiche un message "Loading..." si la donnée "trip" n'existe pas encore -->
@@ -77,6 +87,7 @@ export default {
         `http://localhost:3000/trips/${this.$route.params.id}`
       );
 
+      
 
 
 
@@ -87,6 +98,8 @@ export default {
 
       // Convertit la réponse en JSON et stocke les données dans la donnée "trip"
       const data = await response.json();
+      console.log(data); // Ajoutez cette ligne
+
       this.trip = data;
 
       // Initialise la carte Leaflet
@@ -147,12 +160,21 @@ export default {
     },
   },
 };
+
+
+  
+
+
 </script>
 
 <style scoped>
 /* Styles spécifiques à la carte peuvent être ajoutés ici */
 #map {
   width: 100%;
+}
+
+.no-bullets {
+  list-style: none;
 }
 
 h2 {
@@ -210,6 +232,13 @@ svg {
         padding-right:10px;
       }
 
+
+
+      .no-bullets {
+        list-style: none;
+      }
+      
+
   }
   
   /* Styles pour les mobiles */
@@ -241,5 +270,11 @@ svg {
         height: 35px;
         padding-right:10px;
       }
+
+      
+.no-bullets {
+  list-style: none;
+}
+
   }
 </style>

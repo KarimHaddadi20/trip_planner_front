@@ -29,8 +29,10 @@ const router = useRouter();
 
 const submitForm = async () => {
   console.log("submitForm called");
-  await addPrompt(prompt.value);
-  router.push({ name: 'trips', params: { id: 'trip.id', search: prompt.value } });
+  const newPrompt = await addPrompt(prompt.value);
+  if (newPrompt) { // Vérifiez que newPrompt est défini avant d'accéder à ses propriétés
+    router.push({ name: 'trips', params: { id: newPrompt.id, search: prompt.value } });
+  }
 };
 </script>
 
