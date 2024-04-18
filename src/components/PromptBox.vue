@@ -1,5 +1,4 @@
-<!-- Prompt.vue -->
-
+<!-- PromptBox.vue -->
 <template>
   <div class="container">
     <input
@@ -112,7 +111,7 @@ const submitForm = async () => {
 
 .loader {
   width: 100px;
-  height: 100px; 
+  height: 100px;
 }
 
 @keyframes spin {

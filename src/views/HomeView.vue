@@ -2,12 +2,6 @@
 import Header from "@/components/Header.vue";
 import PromptBox from "@/components/PromptBox.vue";
 import HistoryList from "@/components/HistoryList.vue";
-
-
-
-
-
-
 </script>
 
 <template>
