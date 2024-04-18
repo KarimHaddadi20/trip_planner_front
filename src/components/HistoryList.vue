@@ -54,16 +54,16 @@ h2 {
 }
 
 .history {
-  background: #262522; /* Change this to your preferred background color */
-  border-radius: 10px; /* Change this to your preferred border radius */
-  padding: 10px; /* Add padding to make the text not stick to the border */
-  margin-bottom: 10px; /* Add some margin to separate the prompts */
-  color: white; /* Change this to your preferred text color */
+  background: #262522;
+  border-radius: 10px; 
+  padding: 10px;
+  margin-bottom: 10px;
+  color: white; 
 }
 
 .history2 {
-  text-decoration: none; /* Remove the underline from the link */
-  color: white; /* Change this to your preferred text color */
+  text-decoration: none; 
+  color: white;
 }
 
 /* Tablet */

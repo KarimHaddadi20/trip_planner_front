@@ -23,7 +23,7 @@ export default function usePrompts() {
       });
       prompts.value.push(response.data);
       console.log(response.data);
-      return response.data; // Ajoutez cette ligne
+      return response.data; 
     } catch (error) {
       console.error(error);
     }

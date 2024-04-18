@@ -1,7 +1,5 @@
 <template>
   <div>
-
-
     <div id="map" style="height: 400px"></div>
     <div v-if="trip">
       <h2>
@@ -51,7 +49,6 @@
       </ul>
     </div>
 
-    <!-- Affiche un message "Loading..." si la donnée "trip" n'existe pas encore -->
     <div v-else>Loading...</div>
   </div>
 </template>
@@ -60,7 +57,6 @@
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { ref } from "vue";
-
 
 export default {
   // Données du composant
@@ -74,7 +70,6 @@ export default {
 
       // Référence à la carte Leaflet
       map: null,
-      
     };
   },
 
@@ -136,7 +131,7 @@ export default {
       }
     },
 
-    // icon svg History router modify le prompt 
+    // icon svg History router modify le prompt
     goToHomePage() {
       this.$router.push({ name: "home", query: { search: this.trip.prompt } });
     },
@@ -160,7 +155,6 @@ export default {
 
       const markers = [];
 
-      // Parcourt chaque étape du voyage et ajoute un marqueur à la carte
       for (const step of this.trip.output) {
         const marker = L.marker([
           step.location.latitude,
@@ -172,7 +166,7 @@ export default {
         markers.push(marker);
       }
 
-      // Ajuste la vue de la carte pour afficher tous les marqueurs
+
       const bounds = L.latLngBounds(
         markers.map((marker) => marker.getLatLng())
       );
@@ -183,7 +177,6 @@ export default {
 </script>
 
 <style scoped>
-/* Styles spécifiques à la carte peuvent être ajoutés ici */
 #map {
   width: 100%;
 }
