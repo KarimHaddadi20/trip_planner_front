@@ -27,7 +27,6 @@ export default function usePrompts() {
     }
   };
 
-  
   const deletePrompt = async (id) => {
     try {
       await axios.delete(`http://localhost:3000/trips/${id}`);
@@ -38,6 +37,4 @@ export default function usePrompts() {
   };
 
   return { prompts, fetchPrompts, addPrompt, deletePrompt };
-
-
 }
