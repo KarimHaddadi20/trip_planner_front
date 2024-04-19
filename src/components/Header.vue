@@ -43,7 +43,7 @@
 <style scoped>
 .rotate {
   animation: rotation 2s infinite linear;
-  transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
 
 }
 
