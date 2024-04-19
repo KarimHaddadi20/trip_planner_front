@@ -80,6 +80,8 @@ const router = useRouter();
 
 const isLoading = ref(false);
 
+
+// Fonction pour soumettre le formulaire
 const submitForm = async () => {
   isLoading.value = true;
 
@@ -87,6 +89,7 @@ const submitForm = async () => {
   const newPrompt = await addPrompt(prompt.value);
   isLoading.value = false;
 
+    // Si la nouvelle invite a été ajoutée avec succès, navigation vers la route "trips"
   if (newPrompt) {
     router.push({
       name: "trips",
